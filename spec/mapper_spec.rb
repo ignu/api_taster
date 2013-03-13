@@ -11,6 +11,7 @@ module ApiTaster
 
         ApiTaster.routes do
           get '/dummy_route'
+          get '/awesome_route'
         end
 
         Route.route_set = routes
@@ -18,6 +19,7 @@ module ApiTaster
       end
 
       it "records obsolete definitions" do
+        Route.obsolete_definitions.length.should == 1
         Route.obsolete_definitions.first[:path].should == '/dummy_route'
       end
     end
